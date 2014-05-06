@@ -26,42 +26,42 @@ sub sum {
             $sum += $val;
         }
     }
-	return $sum;
+    return $sum;
 }
 
 sub average {
     my $tot = 0;
-	my $avg = 0;
-	if(@_) {
+    my $avg = 0;
+    if(@_) {
         $tot = sum(@_);
-		$avg = $tot/@_;
-	}
-	return $avg;	    
+        $avg = $tot/@_;
+    }
+    return $avg;	    
 }
 
 sub variance {
     my $avg = average(@_);
-	my $var = 0;
-	if($avg) {
-	    my $tmp = 0;
-	    my $num = 0;
-		my $tot = 0;
+    my $var = 0;
+    if($avg) {
+        my $tmp = 0;
+        my $num = 0;
+	my $tot = 0;
         foreach my $val (@_) {
-		    if($val) {
-		        $tmp = $val - $avg;
-			    $num = $tmp * $val;
-			    $tot += $num;
-			}
-		}
-		$var = $tot/@_;
+	    if($val) {
+	        $tmp = $val - $avg;
+                $num = $tmp * $val;
+	        $tot += $num;
+	    }
 	}
-	return $var;
+	$var = $tot/@_;
+    }
+    return $var;
 }
 
 sub st_dev {
     my $st_dev = 0;
     if(@_) {
-	    $st_dev = variance(@_) ** 0.5;
-	}
-	return $st_dev;
+        $st_dev = variance(@_) ** 0.5;
+    }
+    return $st_dev;
 }
